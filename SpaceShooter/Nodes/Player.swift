@@ -9,6 +9,8 @@ import Foundation
 import SpriteKit
 
 class PlayerShip: SKSpriteNode {
+    let velocity: CGFloat = 0.1
+    
     init() {
         let texture = SKTexture(imageNamed: "player")
         texture.filteringMode = .nearest
