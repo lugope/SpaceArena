@@ -26,13 +26,25 @@ class GameScene: SKScene {
         
         player.position = CGPoint(
             x: frame.midX,
-            y: frame.midY
+            y: frame.midY + 50
         )
         addChild(player)
     }
     
     func setupJoystick() {
+        let joyStick = AnalogJoystick(
+            withBase: TLAnalogJoystickComponent(diameter: JOYSTICK_BASE_SIZE, color: .clear, image: UIImage(named: "jSubstrate"))
+            ,
+            handle: TLAnalogJoystickComponent(diameter: JOYSTICK_HANDLE_SIZE, color: .clear, image: UIImage(named: "jStick"))
+        )
         
+        joyStick.zPosition = NodeZPosition.hud.rawValue
+        joyStick.position = CGPoint(
+            x: frame.minX + SCREEN_INSET + JOYSTICK_BASE_SIZE/2,
+            y: frame.minY + SCREEN_INSET + JOYSTICK_BASE_SIZE/2
+        )
+        
+        addChild(joyStick)
     }
     
     //MARK: Scene Observers

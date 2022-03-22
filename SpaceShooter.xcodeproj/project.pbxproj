@@ -17,7 +17,8 @@
 		761ED14027E9E85D0015AB54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761ED13E27E9E85D0015AB54 /* LaunchScreen.storyboard */; };
 		761ED14A27E9ED660015AB54 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14927E9ED660015AB54 /* GameController.swift */; };
 		761ED14C27E9ED750015AB54 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14B27E9ED750015AB54 /* Player.swift */; };
-		761ED14E27E9F24C0015AB54 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14D27E9F24C0015AB54 /* Joystick.swift */; };
+		761ED15327EA14950015AB54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED15227EA14950015AB54 /* Constants.swift */; };
+		761ED15927EA1C7A0015AB54 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED15827EA1C7A0015AB54 /* AnalogJoystick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,8 @@
 		761ED13F27E9E85D0015AB54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		761ED14927E9ED660015AB54 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		761ED14B27E9ED750015AB54 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		761ED14D27E9F24C0015AB54 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
+		761ED15227EA14950015AB54 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		761ED15827EA1C7A0015AB54 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,9 @@
 		761ED12E27E9E85C0015AB54 /* SpaceShooter */ = {
 			isa = PBXGroup;
 			children = (
+				761ED15127EA14850015AB54 /* Utils */,
 				761ED14827E9ED4A0015AB54 /* Controller */,
-				761ED14727E9ED3A0015AB54 /* Model */,
+				761ED14727E9ED3A0015AB54 /* Nodes */,
 				761ED14627E9ED330015AB54 /* View */,
 				761ED12F27E9E85C0015AB54 /* AppDelegate.swift */,
 				761ED13127E9E85C0015AB54 /* GameScene.sks */,
@@ -87,13 +90,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		761ED14727E9ED3A0015AB54 /* Model */ = {
+		761ED14727E9ED3A0015AB54 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				761ED15827EA1C7A0015AB54 /* AnalogJoystick.swift */,
 				761ED14B27E9ED750015AB54 /* Player.swift */,
-				761ED14D27E9F24C0015AB54 /* Joystick.swift */,
 			);
-			path = Model;
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 		761ED14827E9ED4A0015AB54 /* Controller */ = {
@@ -102,6 +105,14 @@
 				761ED14927E9ED660015AB54 /* GameController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		761ED15127EA14850015AB54 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				761ED15227EA14950015AB54 /* Constants.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +191,8 @@
 				761ED13627E9E85C0015AB54 /* GameScene.swift in Sources */,
 				761ED14A27E9ED660015AB54 /* GameController.swift in Sources */,
 				761ED13827E9E85C0015AB54 /* GameViewController.swift in Sources */,
-				761ED14E27E9F24C0015AB54 /* Joystick.swift in Sources */,
+				761ED15327EA14950015AB54 /* Constants.swift in Sources */,
+				761ED15927EA1C7A0015AB54 /* AnalogJoystick.swift in Sources */,
 				761ED14C27E9ED750015AB54 /* Player.swift in Sources */,
 				761ED13027E9E85C0015AB54 /* AppDelegate.swift in Sources */,
 			);
