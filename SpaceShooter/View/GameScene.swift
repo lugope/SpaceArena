@@ -15,10 +15,60 @@ class GameScene: SKScene {
     
     let player = PlayerShip()
     
+     private var back = SKSpriteNode()
+     private var backWalkingFrames: [SKTexture] = []
+    
     override func didMove(to view: SKView) {
         setupNodes()
         setupJoystick()
+        
+        buildBack()
+        animateBack()
     }
+    
+    func buildBack() {
+      
+//        let backAnimatedAtlas = SKTextureAtlas(named: "BackImages")
+        
+        let backAnimatedAtlas = SKTextureAtlas(named: "BackImages")
+        let f1 = backAnimatedAtlas.textureNamed("back1.png")
+        let f2 = backAnimatedAtlas.textureNamed("back2.png")
+        let f3 = backAnimatedAtlas.textureNamed("back3.png")
+        let f4 = backAnimatedAtlas.textureNamed("back4.png")
+        var walkFrames: [SKTexture] = [f1, f2, f3, f4]
+//        var walkFrames: [SKTexture] = []
+        
+      let numImages = backAnimatedAtlas.textureNames.count
+        
+      for i in 1...numImages {
+          
+        let backTextureName = "back\(i).png"
+        walkFrames.append(backAnimatedAtlas.textureNamed(backTextureName))
+          
+      }
+        
+        backWalkingFrames = walkFrames
+        
+        let firstFrameTexture = backWalkingFrames[0]
+        
+        back = SKSpriteNode(texture: firstFrameTexture)
+        back.zPosition = 0
+//        back.size.height = self.size.height
+//        back.size.width = self.size.width
+        back.size = CGSize(width: self.size.width, height: self.size.height)
+        back.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(back)
+    }
+    
+    func animateBack() {
+      back.run(SKAction.repeatForever(
+        SKAction.animate(with: backWalkingFrames,
+                         timePerFrame: 0.1,
+                         resize: false,
+                         restore: true)),
+        withKey:"walkingInPlaceBack")
+    }
+    
     
     //MARK: Initial Setups
     func setupNodes() {
