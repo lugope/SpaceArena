@@ -15,6 +15,9 @@
 		761ED13B27E9E85C0015AB54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761ED13927E9E85C0015AB54 /* Main.storyboard */; };
 		761ED13D27E9E85D0015AB54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761ED13C27E9E85D0015AB54 /* Assets.xcassets */; };
 		761ED14027E9E85D0015AB54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761ED13E27E9E85D0015AB54 /* LaunchScreen.storyboard */; };
+		761ED14A27E9ED660015AB54 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14927E9ED660015AB54 /* GameController.swift */; };
+		761ED14C27E9ED750015AB54 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14B27E9ED750015AB54 /* Player.swift */; };
+		761ED14E27E9F24C0015AB54 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14D27E9F24C0015AB54 /* Joystick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		761ED13A27E9E85C0015AB54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		761ED13C27E9E85D0015AB54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		761ED13F27E9E85D0015AB54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		761ED14927E9ED660015AB54 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		761ED14B27E9ED750015AB54 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		761ED14D27E9F24C0015AB54 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,16 +65,43 @@
 		761ED12E27E9E85C0015AB54 /* SpaceShooter */ = {
 			isa = PBXGroup;
 			children = (
+				761ED14827E9ED4A0015AB54 /* Controller */,
+				761ED14727E9ED3A0015AB54 /* Model */,
+				761ED14627E9ED330015AB54 /* View */,
 				761ED12F27E9E85C0015AB54 /* AppDelegate.swift */,
 				761ED13127E9E85C0015AB54 /* GameScene.sks */,
 				761ED13327E9E85C0015AB54 /* Actions.sks */,
-				761ED13527E9E85C0015AB54 /* GameScene.swift */,
-				761ED13727E9E85C0015AB54 /* GameViewController.swift */,
 				761ED13927E9E85C0015AB54 /* Main.storyboard */,
 				761ED13C27E9E85D0015AB54 /* Assets.xcassets */,
 				761ED13E27E9E85D0015AB54 /* LaunchScreen.storyboard */,
 			);
 			path = SpaceShooter;
+			sourceTree = "<group>";
+		};
+		761ED14627E9ED330015AB54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				761ED13527E9E85C0015AB54 /* GameScene.swift */,
+				761ED13727E9E85C0015AB54 /* GameViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		761ED14727E9ED3A0015AB54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				761ED14B27E9ED750015AB54 /* Player.swift */,
+				761ED14D27E9F24C0015AB54 /* Joystick.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		761ED14827E9ED4A0015AB54 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				761ED14927E9ED660015AB54 /* GameController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +178,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				761ED13627E9E85C0015AB54 /* GameScene.swift in Sources */,
+				761ED14A27E9ED660015AB54 /* GameController.swift in Sources */,
 				761ED13827E9E85C0015AB54 /* GameViewController.swift in Sources */,
+				761ED14E27E9F24C0015AB54 /* Joystick.swift in Sources */,
+				761ED14C27E9ED750015AB54 /* Player.swift in Sources */,
 				761ED13027E9E85C0015AB54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
