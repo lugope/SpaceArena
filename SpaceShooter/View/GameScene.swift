@@ -22,8 +22,13 @@ class GameScene: SKScene {
         setupNodes()
         setupJoystick()
         
+        
+        
         buildBack()
         animateBack()
+        
+        let backgroundSound = SKAudioNode(fileNamed: "mario.mp3")
+        self.addChild(backgroundSound)
     }
     
     func buildBack() {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C27A71227EA2B9400447540 /* BackImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1C27A71127EA2B9400447540 /* BackImages.atlas */; };
+		1C8EC0F327EB581200BB67EF /* mario.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8EC0F227EB581200BB67EF /* mario.mp3 */; };
 		761ED13027E9E85C0015AB54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED12F27E9E85C0015AB54 /* AppDelegate.swift */; };
 		761ED13227E9E85C0015AB54 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 761ED13127E9E85C0015AB54 /* GameScene.sks */; };
 		761ED13427E9E85C0015AB54 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 761ED13327E9E85C0015AB54 /* Actions.sks */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		1C27A71127EA2B9400447540 /* BackImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BackImages.atlas; sourceTree = "<group>"; };
+		1C8EC0F227EB581200BB67EF /* mario.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mario.mp3; sourceTree = "<group>"; };
 		761ED12C27E9E85C0015AB54 /* SpaceShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		761ED12F27E9E85C0015AB54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		761ED13127E9E85C0015AB54 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		761ED12E27E9E85C0015AB54 /* SpaceShooter */ = {
 			isa = PBXGroup;
 			children = (
+				1C8EC0F227EB581200BB67EF /* mario.mp3 */,
 				1C27A71127EA2B9400447540 /* BackImages.atlas */,
 				761ED14827E9ED4A0015AB54 /* Controller */,
 				761ED14727E9ED3A0015AB54 /* Model */,
@@ -167,6 +170,7 @@
 			files = (
 				761ED13B27E9E85C0015AB54 /* Main.storyboard in Resources */,
 				761ED13227E9E85C0015AB54 /* GameScene.sks in Resources */,
+				1C8EC0F327EB581200BB67EF /* mario.mp3 in Resources */,
 				761ED13D27E9E85D0015AB54 /* Assets.xcassets in Resources */,
 				1C27A71227EA2B9400447540 /* BackImages.atlas in Resources */,
 				761ED14027E9E85D0015AB54 /* LaunchScreen.storyboard in Resources */,
