@@ -19,6 +19,8 @@
 		761ED14C27E9ED750015AB54 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14B27E9ED750015AB54 /* Player.swift */; };
 		761ED15327EA14950015AB54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED15227EA14950015AB54 /* Constants.swift */; };
 		761ED15927EA1C7A0015AB54 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED15827EA1C7A0015AB54 /* AnalogJoystick.swift */; };
+		761ED15D27EB58220015AB54 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 761ED15B27EB58220015AB54 /* fire.sks */; };
+		761ED15E27EB58220015AB54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761ED15C27EB58220015AB54 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		761ED14B27E9ED750015AB54 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		761ED15227EA14950015AB54 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		761ED15827EA1C7A0015AB54 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
+		761ED15B27EB58220015AB54 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
+		761ED15C27EB58220015AB54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		761ED14727E9ED3A0015AB54 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				761ED15A27EB567E0015AB54 /* Particles */,
 				761ED15827EA1C7A0015AB54 /* AnalogJoystick.swift */,
 				761ED14B27E9ED750015AB54 /* Player.swift */,
 			);
@@ -113,6 +118,15 @@
 				761ED15227EA14950015AB54 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		761ED15A27EB567E0015AB54 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				761ED15B27EB58220015AB54 /* fire.sks */,
+				761ED15C27EB58220015AB54 /* Assets.xcassets */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +191,9 @@
 				761ED13227E9E85C0015AB54 /* GameScene.sks in Resources */,
 				761ED13D27E9E85D0015AB54 /* Assets.xcassets in Resources */,
 				761ED14027E9E85D0015AB54 /* LaunchScreen.storyboard in Resources */,
+				761ED15E27EB58220015AB54 /* Assets.xcassets in Resources */,
 				761ED13427E9E85C0015AB54 /* Actions.sks in Resources */,
+				761ED15D27EB58220015AB54 /* fire.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

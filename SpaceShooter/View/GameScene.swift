@@ -38,7 +38,7 @@ class GameScene: SKScene {
     
     //MARK: Initial Setups
     func setupNodes() {
-        backgroundColor = UIColor.darkGray
+        backgroundColor = UIColor.black
         
         player.position = CGPoint(
             x: frame.midX,
@@ -48,15 +48,28 @@ class GameScene: SKScene {
     }
     
     func setupJoystick() {
+        joystick.zPosition = NodeZPosition.hud.rawValue
         addChild(joystick)
         
         joystick.on(.move) { [unowned self] jsInput in
+            // Control player movement
             player.position = CGPoint(
                 x: player.position.x + (jsInput.velocity.x * player.velocity),
                 y: player.position.y + (jsInput.velocity.y * player.velocity)
             )
-            
             player.zRotation = jsInput.angular
+            
+            // Define particle emission properties
+            if !player.isFireEmitterAdded {
+                player.startFireEffect()
+            }
+            player.fireEmitter.particleBirthRate = 10 * jsInput.intensity
+            player.fireEmitter.particleSpeed = -1 * jsInput.intensity
+            player.fireEmitter.emissionAngle = jsInput.angular + 1.57
+        }
+        
+        joystick.on(.end) { [unowned self] _ in
+            player.stopFireEffect()
         }
     }
     

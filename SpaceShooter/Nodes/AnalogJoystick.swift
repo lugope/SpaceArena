@@ -5,6 +5,9 @@
 //  Created by Dmitriy Mitrophanskiy on 2/27/19.
 //  Copyright © 2019 Dmitriy Mitrophanskiy. All rights reserved.
 //
+//  AnalogJoystick.swift
+//  Modified by Lucas Gomes Pereira on 23/03/2022
+//
 
 import SpriteKit
 
@@ -222,6 +225,11 @@ open class TLAnalogJoystick: SKNode {
     public var angular: CGFloat {
         let velocity = self.velocity
         return -atan2(velocity.x, velocity.y)
+    }
+    
+    public var intensity: CGFloat {
+        let velocity = self.velocity
+        return sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
     }
     
     public var disabled: Bool {
