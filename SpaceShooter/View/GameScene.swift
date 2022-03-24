@@ -10,8 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    private var waveCount: Int = 0
     
     let player: PlayerShip = PlayerShip()
     

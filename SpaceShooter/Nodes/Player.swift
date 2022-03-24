@@ -18,7 +18,7 @@ class PlayerShip: SKSpriteNode {
         let texture = SKTexture(imageNamed: "player")
         texture.filteringMode = .nearest
         
-        self.fireEmitter = SKEmitterNode(fileNamed: "fire.sks")!
+        fireEmitter = SKEmitterNode(fileNamed: "fire.sks")!
         
         super.init(
             texture: texture,
@@ -26,10 +26,16 @@ class PlayerShip: SKSpriteNode {
             size: CGSize(width: 32, height: 32)
         )
         
-        self.fireEmitter.position = CGPoint(x: 0, y: -self.size.height/2)
-        self.fireEmitter.zPosition = NodeZPosition.ship.rawValue
+        fireEmitter.position = CGPoint(x: 0, y: -self.size.height/2)
+        fireEmitter.zPosition = NodeZPosition.ship.rawValue
         
-        self.zPosition = NodeZPosition.ship.rawValue
+        zPosition = NodeZPosition.ship.rawValue
+        
+        physicsBody = SKPhysicsBody(texture: self.texture!, size: self.texture!.size())
+        physicsBody?.isDynamic = false
+        physicsBody?.categoryBitMask = CollisionType.player.rawValue
+        physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyBullet.rawValue
+        physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyBullet.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -17,3 +17,18 @@ let SCREEN_INSET: CGFloat = 20
 enum NodeZPosition: CGFloat {
     case background = -1, ship, hud
 }
+
+// Collision identifier
+enum CollisionType: UInt32 {
+    case player = 1
+    case playerBullet = 2
+    case enemy = 4
+    case enemyBullet = 8
+}
+
+// Enemy types
+enum EnemyType {
+    case small, normal, big
+    
+    
+}
