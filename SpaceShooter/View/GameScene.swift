@@ -33,6 +33,11 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupNodes()
         setupJoystick()
+        
+        //Temp code to test enemy DELETE LATER
+        let testEnemy = Enemy(withType: .normal)
+        testEnemy.position = CGPoint(x: frame.maxX - 50, y: frame.maxY - 50)
+        addChild(testEnemy)
     }
     
     //MARK: Initial Setups
@@ -64,7 +69,7 @@ class GameScene: SKScene {
             }
             player.fireEmitter.particleBirthRate = 10 * jsInput.intensity
             player.fireEmitter.particleSpeed = -1 * jsInput.intensity
-            player.fireEmitter.emissionAngle = jsInput.angular + 1.57
+            player.fireEmitter.emissionAngle = jsInput.angular + DEGREES_90
         }
         
         joystick.on(.end) { [unowned self] _ in
@@ -102,6 +107,10 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        //Update enemies
+        let enemies = children.compactMap { $0 as? Enemy }
+        for enemy in enemies {
+            enemy.moveTo(player.position)
+        }
     }
 }
