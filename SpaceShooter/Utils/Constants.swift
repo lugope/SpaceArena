@@ -29,6 +29,62 @@ enum CollisionType: UInt32 {
     case enemyBullet = 8
 }
 
+// Bullet Type
+enum BulletType {
+    case player, enemy
+    
+    var texture: SKTexture {
+        var textureName = ""
+        
+        switch self {
+        case .player:
+            textureName = "playerBullet"
+        case .enemy:
+            textureName = "enemyBullet"
+        }
+        
+        let texture = SKTexture(imageNamed: textureName)
+        texture.filteringMode = .nearest
+        return texture
+    }
+    
+    var size: CGSize {
+        switch self {
+        case .player:
+            return CGSize(width: 4, height: 6)
+        case .enemy:
+            return CGSize(width: 8, height: 8)
+        }
+    }
+    
+    var categoryBitMask: UInt32 {
+        switch self {
+        case .player:
+            return CollisionType.playerBullet.rawValue
+        case .enemy:
+            return CollisionType.enemyBullet.rawValue
+        }
+    }
+    
+    var collisionBitMask: UInt32 {
+        switch self {
+        case .player:
+            return CollisionType.enemy.rawValue
+        case .enemy:
+            return CollisionType.player.rawValue
+        }
+    }
+    
+    var velocity: CGFloat {
+        switch self {
+        case .player:
+            return 1
+        case .enemy:
+            return 0.7
+        }
+    }
+}
+
 // Enemy types
 enum EnemyType {
     case small, normal, big

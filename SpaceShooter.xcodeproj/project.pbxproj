@@ -22,6 +22,7 @@
 		761ED15D27EB58220015AB54 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 761ED15B27EB58220015AB54 /* fire.sks */; };
 		761ED15E27EB58220015AB54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761ED15C27EB58220015AB54 /* Assets.xcassets */; };
 		761ED16027ECB6580015AB54 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED15F27ECB6580015AB54 /* Enemy.swift */; };
+		761ED16227ED24210015AB54 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED16127ED24210015AB54 /* Bullet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		761ED15B27EB58220015AB54 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
 		761ED15C27EB58220015AB54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		761ED15F27ECB6580015AB54 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		761ED16127ED24210015AB54 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				761ED15827EA1C7A0015AB54 /* AnalogJoystick.swift */,
 				761ED14B27E9ED750015AB54 /* Player.swift */,
 				761ED15F27ECB6580015AB54 /* Enemy.swift */,
+				761ED16127ED24210015AB54 /* Bullet.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				761ED15927EA1C7A0015AB54 /* AnalogJoystick.swift in Sources */,
 				761ED14C27E9ED750015AB54 /* Player.swift in Sources */,
 				761ED13027E9E85C0015AB54 /* AppDelegate.swift in Sources */,
+				761ED16227ED24210015AB54 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

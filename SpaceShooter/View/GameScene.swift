@@ -40,6 +40,10 @@ class GameScene: SKScene {
         let testEnemy = Enemy(withType: .normal)
         testEnemy.position = CGPoint(x: frame.maxX - 50, y: frame.maxY - 50)
         addChild(testEnemy)
+        
+        let testEnemyBullet = Bullet(withType: BulletType.enemy)
+        testEnemyBullet.position = .zero
+        addChild(testEnemyBullet)
     }
     
     //MARK: Initial Setups
