@@ -20,10 +20,15 @@ class Enemy: SKSpriteNode {
         super.init(
             texture: enemyType.texture,
             color: UIColor.clear,
-            size: CGSize(width: enemyType.size, height: enemyType.size)
+            size: type.size
         )
         
         zPosition = NodeZPosition.ship.rawValue
+        
+        physicsBody = SKPhysicsBody(rectangleOf: type.size)
+        physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
+        physicsBody?.collisionBitMask = CollisionType.player.rawValue | CollisionType.playerBullet.rawValue
+        physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerBullet.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {

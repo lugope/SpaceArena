@@ -31,6 +31,8 @@ class GameScene: SKScene {
     }()
     
     override func didMove(to view: SKView) {
+        physicsWorld.gravity = .zero
+        
         setupNodes()
         setupJoystick()
         
@@ -73,7 +75,7 @@ class GameScene: SKScene {
         }
         
         joystick.on(.end) { [unowned self] _ in
-            player.stopFireEffect()
+            player.fireEmitter.particleBirthRate = 0
         }
     }
     

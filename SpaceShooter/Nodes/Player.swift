@@ -31,7 +31,7 @@ class PlayerShip: SKSpriteNode {
         
         zPosition = NodeZPosition.ship.rawValue
         
-        physicsBody = SKPhysicsBody(texture: self.texture!, size: self.texture!.size())
+        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 32, height: 32))
         physicsBody?.isDynamic = false
         physicsBody?.categoryBitMask = CollisionType.player.rawValue
         physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyBullet.rawValue

@@ -72,14 +72,14 @@ enum EnemyType {
         }
     }
     
-    var size: Int {
+    var size: CGSize {
         switch self {
         case .small:
-            return 32
+            return CGSize(width: 32, height: 32)
         case .normal:
-            return 32
+            return CGSize(width: 32, height: 32)
         case .big:
-            return 40
+            return CGSize(width: 40, height: 40)
         }
     }
 }
