@@ -10,7 +10,9 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private var waveCount: Int = 0
+    private var waveCount: Int = 2
+    private var waveGap: Double = 3
+    private var lastWaveTime: Double = 0
     private var isPlayerFireEnable = false
     
     let player: PlayerShip = PlayerShip()
@@ -330,10 +332,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             secoundNode.removeFromParent()
         }
+        
+        if firstNode.name == NodeName.enemyBullet.rawValue {
+            if let bulleExplosion = SKEmitterNode(fileNamed: "Bullet_Explosion") {
+                bulleExplosion.zPosition = NodeZPosition.hud.rawValue
+                bulleExplosion.position = secoundNode.position
+                addChild(bulleExplosion)
+            }
+            secoundNode.removeFromParent()
+            firstNode.removeFromParent()
+        }
+        
+        if secoundNode.name == NodeName.player.rawValue {
+            if let bulleExplosion = SKEmitterNode(fileNamed: "Bullet_Explosion") {
+                bulleExplosion.zPosition = NodeZPosition.hud.rawValue
+                bulleExplosion.position = secoundNode.position
+                addChild(bulleExplosion)
+            }
+            secoundNode.removeFromParent()
+            firstNode.removeFromParent()
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if (lastWaveTime + 5) < currentTime {
+            spawnWave()
+            lastWaveTime = currentTime
+        }
+        
         for node in children {
+            
             if let enemy = node as? Enemy {
                 enemy.moveTo(player.position)
                 
@@ -360,6 +388,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.lastFireTime = currentTime
             player.fire()
         }
+    }
+    
+    func spawnWave(){
+        let courner1 = CGPoint(x: frame.minX, y: frame.minY)
+        let courner2 = CGPoint(x: frame.minX, y: frame.maxY)
+        let courner3 = CGPoint(x: frame.maxX, y: frame.minY)
+        let courner4 = CGPoint(x: frame.maxX, y: frame.maxY)
+        
+        let courners = [courner1, courner2, courner3, courner4]
+        
+        for i in 1...waveCount {
+            let enemy = Enemy(withType: EnemyType.normal)
+            enemy.position = courners[i%4]
+            addChild(enemy)
+        }
+        
+        print("WAVE!!")
+        
+        waveCount += 1
     }
 }
 
