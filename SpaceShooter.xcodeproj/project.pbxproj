@@ -14,7 +14,6 @@
 		1C2BBAC927ECD7B800CEED59 /* Bord1Images.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1C2BBAC827ECD7B800CEED59 /* Bord1Images.atlas */; };
 		1C2BBACD27EDC30900CEED59 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BBACA27EDC30900CEED59 /* Bullet.swift */; };
 		1C2BBACF27EDC30900CEED59 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BBACC27EDC30900CEED59 /* Enemy.swift */; };
-		1C8EC0F327EB581200BB67EF /* mario.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8EC0F227EB581200BB67EF /* mario.mp3 */; };
 		1C8EC0FB27EB739500BB67EF /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8EC0F627EB739500BB67EF /* AnalogJoystick.swift */; };
 		1C8EC0FC27EB739500BB67EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C8EC0F827EB739500BB67EF /* Assets.xcassets */; };
 		1C8EC0FD27EB739500BB67EF /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1C8EC0F927EB739500BB67EF /* fire.sks */; };
@@ -29,6 +28,9 @@
 		7654A33427EDFC9E00BF3F86 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654A33327EDFC9E00BF3F86 /* Player.swift */; };
 		76D6C73C27EE0D9E00C2DC02 /* Bullet_Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76D6C73B27EE0D9E00C2DC02 /* Bullet_Explosion.sks */; };
 		76D6C73E27EE136A00C2DC02 /* Enemy_Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76D6C73D27EE136A00C2DC02 /* Enemy_Explosion.sks */; };
+		76D6C74027EE173D00C2DC02 /* backgroundSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76D6C73F27EE173D00C2DC02 /* backgroundSound.mp3 */; };
+		76D6C74327EE177D00C2DC02 /* playerShot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76D6C74127EE177D00C2DC02 /* playerShot.wav */; };
+		76D6C74427EE177D00C2DC02 /* enemyShot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76D6C74227EE177D00C2DC02 /* enemyShot.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +41,6 @@
 		1C2BBAC827ECD7B800CEED59 /* Bord1Images.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bord1Images.atlas; sourceTree = "<group>"; };
 		1C2BBACA27EDC30900CEED59 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		1C2BBACC27EDC30900CEED59 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
-		1C8EC0F227EB581200BB67EF /* mario.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mario.mp3; sourceTree = "<group>"; };
 		1C8EC0F627EB739500BB67EF /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		1C8EC0F827EB739500BB67EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C8EC0F927EB739500BB67EF /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
@@ -55,6 +56,9 @@
 		7654A33327EDFC9E00BF3F86 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		76D6C73B27EE0D9E00C2DC02 /* Bullet_Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bullet_Explosion.sks; sourceTree = "<group>"; };
 		76D6C73D27EE136A00C2DC02 /* Enemy_Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Enemy_Explosion.sks; sourceTree = "<group>"; };
+		76D6C73F27EE173D00C2DC02 /* backgroundSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSound.mp3; sourceTree = "<group>"; };
+		76D6C74127EE177D00C2DC02 /* playerShot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = playerShot.wav; sourceTree = "<group>"; };
+		76D6C74227EE177D00C2DC02 /* enemyShot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = enemyShot.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +168,9 @@
 		7654A33627EDFCCF00BF3F86 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				1C8EC0F227EB581200BB67EF /* mario.mp3 */,
+				76D6C74227EE177D00C2DC02 /* enemyShot.wav */,
+				76D6C74127EE177D00C2DC02 /* playerShot.wav */,
+				76D6C73F27EE173D00C2DC02 /* backgroundSound.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -227,11 +233,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D6C74027EE173D00C2DC02 /* backgroundSound.mp3 in Resources */,
 				1C2BBAC527ECCA9C00CEED59 /* BordImages.atlas in Resources */,
+				76D6C74327EE177D00C2DC02 /* playerShot.wav in Resources */,
 				761ED13B27E9E85C0015AB54 /* Main.storyboard in Resources */,
 				76D6C73E27EE136A00C2DC02 /* Enemy_Explosion.sks in Resources */,
+				76D6C74427EE177D00C2DC02 /* enemyShot.wav in Resources */,
 				1C8EC0FD27EB739500BB67EF /* fire.sks in Resources */,
-				1C8EC0F327EB581200BB67EF /* mario.mp3 in Resources */,
 				1C2BBABE27ECBFD700CEED59 /* Actions.sks in Resources */,
 				761ED13D27E9E85D0015AB54 /* Assets.xcassets in Resources */,
 				1C27A71227EA2B9400447540 /* BackImages.atlas in Resources */,

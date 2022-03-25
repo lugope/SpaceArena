@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buildBord1Anim()
         animateBord1()
         
-        let backgroundSound = SKAudioNode(fileNamed: "mario.mp3")
+        let backgroundSound = SKAudioNode(fileNamed: "backgroundSound.mp3")
         self.addChild(backgroundSound)
         
         

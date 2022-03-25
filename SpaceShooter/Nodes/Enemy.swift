@@ -58,6 +58,15 @@ class Enemy: SKSpriteNode {
             
             world.addChild(bullet)
             
+            let shootSound = SKAudioNode(fileNamed: "enemyShot.wav")
+            shootSound.autoplayLooped = false
+            world.addChild(shootSound)
+            world.run(SKAction.sequence([
+                SKAction.run {
+                    shootSound.run(SKAction.play())
+                }
+            ]))
+            
             let dx = bullet.velocity * cos(zRotation + DEGREES_90)
             let dy = bullet.velocity * sin(zRotation + DEGREES_90)
             bullet.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
