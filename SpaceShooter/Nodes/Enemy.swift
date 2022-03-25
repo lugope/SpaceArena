@@ -13,6 +13,8 @@ class Enemy: SKSpriteNode {
     var hp: Int
     var lastFireTime: Double = 0
     
+    var shouldFire = false
+    
     init(withType enemyType: EnemyType) {
         self.type = enemyType
         self.velocity = enemyType.velocity

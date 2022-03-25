@@ -87,7 +87,7 @@ enum BulletType {
         case .player:
             return 0.3
         case .enemy:
-            return 0.1
+            return 0.2
         }
     }
     

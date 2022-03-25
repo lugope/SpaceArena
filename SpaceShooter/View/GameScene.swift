@@ -62,11 +62,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buildBack()
         animateBack()
         
-        buildBordAnim()
-        animateBord()
+        //        buildBordAnim()
+        //        animateBord()
         
-        buildBord1Anim()
-        animateBord1()
+        //        buildBord1Anim()
+        //        animateBord1()
         
         let backgroundSound = SKAudioNode(fileNamed: "backgroundSound.mp3")
         self.addChild(backgroundSound)
@@ -76,6 +76,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let testEnemy = Enemy(withType: .normal)
         testEnemy.position = CGPoint(x: frame.maxX - 50, y: frame.maxY - 50)
         addChild(testEnemy)
+        
+        let testEnemy2 = Enemy(withType: .normal)
+        testEnemy2.position = CGPoint(x: frame.minX + 50, y: frame.minY + 50)
+        addChild(testEnemy2)
     }
     
     
@@ -335,7 +339,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if enemy.lastFireTime + 3 < currentTime {
                     enemy.lastFireTime = currentTime
-                    enemy.fire()
+                    
+                    if !enemy.shouldFire {
+                        enemy.shouldFire = true
+                        
+                    } else {
+                        enemy.fire()
+                    }
                 }
             }
             
