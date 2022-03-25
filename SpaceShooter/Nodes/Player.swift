@@ -13,6 +13,7 @@ class PlayerShip: SKSpriteNode {
     let fireEmitter: SKEmitterNode
     
     var isFireEmitterAdded: Bool = false
+    var lastFireTime: Double = 0
     
     init() {
         let texture = SKTexture(imageNamed: "player")
@@ -42,7 +43,7 @@ class PlayerShip: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startFireEffect() {
+    func startPropulsionEffect() {
         if let world = self.parent {
             fireEmitter.targetNode = world
         }
@@ -51,8 +52,17 @@ class PlayerShip: SKSpriteNode {
         isFireEmitterAdded = true
     }
     
-    func stopFireEffect() {
-        fireEmitter.removeFromParent()
-        isFireEmitterAdded = false
+    func fire() {
+        if let world = self.scene {
+            let bullet = Bullet(withType: BulletType.player)
+            bullet.position = position
+            bullet.zRotation = zRotation
+            
+            world.addChild(bullet)
+            
+            let dx = bullet.velocity * cos(zRotation + DEGREES_90)
+            let dy = bullet.velocity * sin(zRotation + DEGREES_90)
+            bullet.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
+        }
     }
 }

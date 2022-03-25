@@ -78,9 +78,9 @@ enum BulletType {
     var velocity: CGFloat {
         switch self {
         case .player:
-            return 0.7
+            return 0.3
         case .enemy:
-            return 0.5
+            return 0.1
         }
     }
 }

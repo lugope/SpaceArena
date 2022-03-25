@@ -11,6 +11,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     private var waveCount: Int = 0
+    private var isPlayerFireEnable = false
     
     let player: PlayerShip = PlayerShip()
     
@@ -58,6 +59,8 @@ class GameScene: SKScene {
         addChild(joystick)
         
         joystick.on(.move) { [unowned self] jsInput in
+            isPlayerFireEnable = true
+            
             // Control player movement
             player.position = CGPoint(
                 x: player.position.x + (jsInput.velocity.x * player.velocity),
@@ -67,7 +70,7 @@ class GameScene: SKScene {
             
             // Define particle emission properties
             if !player.isFireEmitterAdded {
-                player.startFireEffect()
+                player.startPropulsionEffect()
             }
             player.fireEmitter.particleBirthRate = 10 * jsInput.intensity
             player.fireEmitter.particleSpeed = -1 * jsInput.intensity
@@ -75,6 +78,7 @@ class GameScene: SKScene {
         }
         
         joystick.on(.end) { [unowned self] _ in
+            isPlayerFireEnable = false
             player.fireEmitter.particleBirthRate = 0
         }
     }
@@ -124,6 +128,11 @@ class GameScene: SKScene {
                     bullet.removeFromParent()
                 }
             }
+        }
+        
+        if (isPlayerFireEnable) && (player.lastFireTime + 0.3 < currentTime) {
+            player.lastFireTime = currentTime
+            player.fire()
         }
     }
 }
