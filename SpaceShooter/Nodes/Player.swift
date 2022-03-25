@@ -31,6 +31,7 @@ class PlayerShip: SKSpriteNode {
         fireEmitter.zPosition = NodeZPosition.ship.rawValue
         
         zPosition = NodeZPosition.ship.rawValue
+        name = NodeName.player.rawValue
         
         physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 32, height: 32))
         physicsBody?.isDynamic = false

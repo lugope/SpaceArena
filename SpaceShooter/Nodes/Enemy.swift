@@ -24,9 +24,12 @@ class Enemy: SKSpriteNode {
             size: type.size
         )
         
+        
         zPosition = NodeZPosition.ship.rawValue
+        name = NodeName.enemy.rawValue
         
         physicsBody = SKPhysicsBody(rectangleOf: type.size)
+        physicsBody?.isDynamic = false
         physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
         physicsBody?.collisionBitMask = CollisionType.player.rawValue | CollisionType.playerBullet.rawValue
         physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerBullet.rawValue
@@ -59,5 +62,15 @@ class Enemy: SKSpriteNode {
             let dy = bullet.velocity * sin(zRotation + DEGREES_90)
             bullet.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
         }
+    }
+    
+    func takeDamage() -> Bool{
+        self.hp -= 1
+        
+        if hp <= 0 {
+            return true
+        }
+        
+        return false
     }
 }

@@ -15,6 +15,7 @@ class Bullet: SKSpriteNode {
         
         super.init(texture: bulletType.texture, color: UIColor.clear, size: bulletType.size)
         zPosition = NodeZPosition.bullet.rawValue
+        name = bulletType.name
         
         physicsBody = SKPhysicsBody(rectangleOf: bulletType.size)
         physicsBody?.categoryBitMask = bulletType.categoryBitMask

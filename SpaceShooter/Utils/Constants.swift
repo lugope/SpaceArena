@@ -21,6 +21,13 @@ enum NodeZPosition: CGFloat {
     case background = -1, bullet, ship, hud
 }
 
+enum NodeName: String {
+    case player = "player"
+    case playerBullet = "playerBullet"
+    case enemy = "enemy"
+    case enemyBullet = "enemyBullet"
+}
+
 // Collision identifier
 enum CollisionType: UInt32 {
     case player = 1
@@ -81,6 +88,15 @@ enum BulletType {
             return 0.3
         case .enemy:
             return 0.1
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .player:
+            return NodeName.playerBullet.rawValue
+        case .enemy:
+            return NodeName.enemyBullet.rawValue
         }
     }
 }

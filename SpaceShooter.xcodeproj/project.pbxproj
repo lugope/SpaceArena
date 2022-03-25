@@ -27,6 +27,8 @@
 		761ED14027E9E85D0015AB54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761ED13E27E9E85D0015AB54 /* LaunchScreen.storyboard */; };
 		761ED14A27E9ED660015AB54 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761ED14927E9ED660015AB54 /* GameController.swift */; };
 		7654A33427EDFC9E00BF3F86 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654A33327EDFC9E00BF3F86 /* Player.swift */; };
+		76D6C73C27EE0D9E00C2DC02 /* Bullet_Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76D6C73B27EE0D9E00C2DC02 /* Bullet_Explosion.sks */; };
+		76D6C73E27EE136A00C2DC02 /* Enemy_Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76D6C73D27EE136A00C2DC02 /* Enemy_Explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		761ED13F27E9E85D0015AB54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		761ED14927E9ED660015AB54 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		7654A33327EDFC9E00BF3F86 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		76D6C73B27EE0D9E00C2DC02 /* Bullet_Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bullet_Explosion.sks; sourceTree = "<group>"; };
+		76D6C73D27EE136A00C2DC02 /* Enemy_Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Enemy_Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 			children = (
 				1C8EC0F827EB739500BB67EF /* Assets.xcassets */,
 				1C8EC0F927EB739500BB67EF /* fire.sks */,
+				76D6C73B27EE0D9E00C2DC02 /* Bullet_Explosion.sks */,
+				76D6C73D27EE136A00C2DC02 /* Enemy_Explosion.sks */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -223,11 +229,13 @@
 			files = (
 				1C2BBAC527ECCA9C00CEED59 /* BordImages.atlas in Resources */,
 				761ED13B27E9E85C0015AB54 /* Main.storyboard in Resources */,
+				76D6C73E27EE136A00C2DC02 /* Enemy_Explosion.sks in Resources */,
 				1C8EC0FD27EB739500BB67EF /* fire.sks in Resources */,
 				1C8EC0F327EB581200BB67EF /* mario.mp3 in Resources */,
 				1C2BBABE27ECBFD700CEED59 /* Actions.sks in Resources */,
 				761ED13D27E9E85D0015AB54 /* Assets.xcassets in Resources */,
 				1C27A71227EA2B9400447540 /* BackImages.atlas in Resources */,
+				76D6C73C27EE0D9E00C2DC02 /* Bullet_Explosion.sks in Resources */,
 				761ED14027E9E85D0015AB54 /* LaunchScreen.storyboard in Resources */,
 				1C2BBAC127ECC1A400CEED59 /* GameScene.sks in Resources */,
 				1C8EC0FC27EB739500BB67EF /* Assets.xcassets in Resources */,

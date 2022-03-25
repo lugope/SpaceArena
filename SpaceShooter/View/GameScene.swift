@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
+        physicsWorld.contactDelegate = self
         
         setupNodes()
         setupJoystick()
@@ -66,17 +67,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         buildBord1Anim()
         animateBord1()
-        
-        let borderBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-        // 2
-        borderBody.friction = 0
-        // 3
-        self.physicsBody = borderBody
-        
-        let bottomRect = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: 1)
-        let bottom = SKNode()
-        bottom.physicsBody = SKPhysicsBody(edgeLoopFrom: bottomRect)
-        addChild(bottom)
         
         let backgroundSound = SKAudioNode(fileNamed: "mario.mp3")
         self.addChild(backgroundSound)
@@ -311,6 +301,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else {return}
+        guard let nodeB = contact.bodyB.node else {return}
+        
+        let sortedNodes = [nodeA, nodeB].sorted { $0.name ?? "" < $1.name ?? "" }
+        let firstNode = sortedNodes[0]
+        let secoundNode = sortedNodes[1]
+        
+        if secoundNode.name == NodeName.playerBullet.rawValue {
+            if let enemyExplosion = SKEmitterNode(fileNamed: "Enemy_Explosion") {
+                enemyExplosion.zPosition = NodeZPosition.hud.rawValue
+                enemyExplosion.position = secoundNode.position
+                addChild(enemyExplosion)
+            }
+            firstNode.removeFromParent()
+            
+            if let bulleExplosion = SKEmitterNode(fileNamed: "Bullet_Explosion") {
+                bulleExplosion.zPosition = NodeZPosition.hud.rawValue
+                bulleExplosion.position = secoundNode.position
+                addChild(bulleExplosion)
+            }
+            secoundNode.removeFromParent()
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
