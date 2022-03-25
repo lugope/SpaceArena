@@ -18,7 +18,7 @@ let DEGREES_45: CGFloat = CGFloat(Float.pi/4)
 
 // Game elements Z positions
 enum NodeZPosition: CGFloat {
-    case background = -1, ship, hud
+    case background = -1, bullet, ship, hud
 }
 
 // Collision identifier
@@ -78,9 +78,9 @@ enum BulletType {
     var velocity: CGFloat {
         switch self {
         case .player:
-            return 1
-        case .enemy:
             return 0.7
+        case .enemy:
+            return 0.5
         }
     }
 }

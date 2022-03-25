@@ -14,12 +14,13 @@ class Bullet: SKSpriteNode {
         self.velocity = bulletType.velocity
         
         super.init(texture: bulletType.texture, color: UIColor.clear, size: bulletType.size)
-        zPosition = NodeZPosition.ship.rawValue
+        zPosition = NodeZPosition.bullet.rawValue
         
         physicsBody = SKPhysicsBody(rectangleOf: bulletType.size)
         physicsBody?.categoryBitMask = bulletType.categoryBitMask
         physicsBody?.collisionBitMask = bulletType.collisionBitMask
         physicsBody?.contactTestBitMask = bulletType.collisionBitMask
+        physicsBody?.mass = 0.001
     }
     
     required init?(coder aDecoder: NSCoder) {

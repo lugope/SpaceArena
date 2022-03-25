@@ -40,10 +40,6 @@ class GameScene: SKScene {
         let testEnemy = Enemy(withType: .normal)
         testEnemy.position = CGPoint(x: frame.maxX - 50, y: frame.maxY - 50)
         addChild(testEnemy)
-        
-        let testEnemyBullet = Bullet(withType: BulletType.enemy)
-        testEnemyBullet.position = .zero
-        addChild(testEnemyBullet)
     }
     
     //MARK: Initial Setups
@@ -113,10 +109,21 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        //Update enemies
-        let enemies = children.compactMap { $0 as? Enemy }
-        for enemy in enemies {
-            enemy.moveTo(player.position)
+        for node in children {
+            if let enemy = node as? Enemy {
+                enemy.moveTo(player.position)
+                
+                if enemy.lastFireTime + 3 < currentTime {
+                    enemy.lastFireTime = currentTime
+                    enemy.fire()
+                }
+            }
+            
+            if let bullet = node as? Bullet {
+                if !frame.intersects(bullet.frame) {
+                    bullet.removeFromParent()
+                }
+            }
         }
     }
 }

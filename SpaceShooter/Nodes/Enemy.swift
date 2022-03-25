@@ -11,6 +11,7 @@ class Enemy: SKSpriteNode {
     let type: EnemyType
     let velocity: CGFloat
     var hp: Int
+    var lastFireTime: Double = 0
     
     init(withType enemyType: EnemyType) {
         self.type = enemyType
@@ -38,12 +39,25 @@ class Enemy: SKSpriteNode {
     func moveTo(_ position: CGPoint) {
         let dx = position.x - self.position.x
         let dy = position.y - self.position.y
-        let angleEnemyPlayer = -atan2(dx, dy)
+        let vectorAngle = -atan2(dx, dy)
         
-        self.zRotation = angleEnemyPlayer
+        self.zRotation = vectorAngle
         self.position = CGPoint(
-            x: self.position.x + cos(angleEnemyPlayer + DEGREES_90) * velocity,
-            y: self.position.y + sin(angleEnemyPlayer + DEGREES_90) * velocity
+            x: self.position.x + cos(vectorAngle + DEGREES_90) * velocity,
+            y: self.position.y + sin(vectorAngle + DEGREES_90) * velocity
         )
+    }
+    
+    func fire() {
+        if let world = self.scene {
+            let bullet = Bullet(withType: BulletType.enemy)
+            bullet.position = self.position
+            
+            world.addChild(bullet)
+            
+            let dx = bullet.velocity * cos(zRotation + DEGREES_90)
+            let dy = bullet.velocity * sin(zRotation + DEGREES_90)
+            bullet.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
+        }
     }
 }
