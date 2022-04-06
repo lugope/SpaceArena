@@ -8,6 +8,8 @@ You, as a noble hero, must kill the Space Pirates and leave safely!
 Space Arena is a survival game. Live the longest and destroy all enemies.
 And listen to amazing music inside the game! Thank you!
 
+Project developed by @Gleswam and @lugope 
+
 
 # Controls
 Here is the simple, but very sensitive joystick. You can control your velocity.
