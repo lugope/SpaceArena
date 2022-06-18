@@ -10,9 +10,10 @@ import SpriteKit
 class Enemy: SKSpriteNode {
     let type: EnemyType
     let velocity: CGFloat
+    let shootingSound: SKAudioNode
+    
     var hp: Int
     var lastFireTime: Double = 0
-    
     var shouldFire = false
     
     init(withType enemyType: EnemyType) {
@@ -20,12 +21,14 @@ class Enemy: SKSpriteNode {
         self.velocity = enemyType.velocity
         self.hp = enemyType.hp
         
+        self.shootingSound = SKAudioNode(fileNamed: "enemyShot.wav")
+        shootingSound.autoplayLooped = false
+        
         super.init(
             texture: enemyType.texture,
             color: UIColor.clear,
             size: type.size
         )
-        
         
         zPosition = NodeZPosition.ship.rawValue
         name = NodeName.enemy.rawValue
@@ -35,6 +38,8 @@ class Enemy: SKSpriteNode {
         physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
         physicsBody?.collisionBitMask = CollisionType.player.rawValue | CollisionType.playerBullet.rawValue
         physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerBullet.rawValue
+        
+        self.addChild(shootingSound)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,12 +65,9 @@ class Enemy: SKSpriteNode {
             
             world.addChild(bullet)
             
-            let shootSound = SKAudioNode(fileNamed: "enemyShot.wav")
-            shootSound.autoplayLooped = false
-            world.addChild(shootSound)
-            world.run(SKAction.sequence([
+            self.run(SKAction.sequence([
                 SKAction.run {
-                    shootSound.run(SKAction.play())
+                    self.shootingSound.run(SKAction.play())
                 }
             ]))
             

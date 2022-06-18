@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C27A71227EA2B9400447540 /* BackImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1C27A71127EA2B9400447540 /* BackImages.atlas */; };
 		1C2BBABE27ECBFD700CEED59 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1C2BBABC27ECBFD700CEED59 /* Actions.sks */; };
 		1C2BBAC127ECC1A400CEED59 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1C2BBAC027ECC1A400CEED59 /* GameScene.sks */; };
-		1C2BBAC527ECCA9C00CEED59 /* BordImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1C2BBAC427ECCA9C00CEED59 /* BordImages.atlas */; };
-		1C2BBAC927ECD7B800CEED59 /* Bord1Images.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1C2BBAC827ECD7B800CEED59 /* Bord1Images.atlas */; };
 		1C2BBACD27EDC30900CEED59 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BBACA27EDC30900CEED59 /* Bullet.swift */; };
 		1C2BBACF27EDC30900CEED59 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BBACC27EDC30900CEED59 /* Enemy.swift */; };
 		1C8EC0FB27EB739500BB67EF /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8EC0F627EB739500BB67EF /* AnalogJoystick.swift */; };
@@ -34,18 +31,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C27A71127EA2B9400447540 /* BackImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BackImages.atlas; sourceTree = "<group>"; };
 		1C2BBABC27ECBFD700CEED59 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		1C2BBAC027ECC1A400CEED59 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		1C2BBAC427ECCA9C00CEED59 /* BordImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BordImages.atlas; sourceTree = "<group>"; };
-		1C2BBAC827ECD7B800CEED59 /* Bord1Images.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bord1Images.atlas; sourceTree = "<group>"; };
 		1C2BBACA27EDC30900CEED59 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		1C2BBACC27EDC30900CEED59 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		1C8EC0F627EB739500BB67EF /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		1C8EC0F827EB739500BB67EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C8EC0F927EB739500BB67EF /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
 		1C8EC10027EB740000BB67EF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		761ED12C27E9E85C0015AB54 /* SpaceShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		761ED12C27E9E85C0015AB54 /* Space Arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Arena.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761ED12F27E9E85C0015AB54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		761ED13527E9E85C0015AB54 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		761ED13727E9E85C0015AB54 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +108,7 @@
 		761ED12D27E9E85C0015AB54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				761ED12C27E9E85C0015AB54 /* SpaceShooter.app */,
+				761ED12C27E9E85C0015AB54 /* Space Arena.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,7 +120,6 @@
 				761ED14827E9ED4A0015AB54 /* Controller */,
 				1C8EC0F527EB739500BB67EF /* Nodes */,
 				7654A33627EDFCCF00BF3F86 /* Sounds */,
-				7654A33527EDFCBE00BF3F86 /* Atlas */,
 				1C8EC0FF27EB740000BB67EF /* Utils */,
 				761ED12F27E9E85C0015AB54 /* AppDelegate.swift */,
 				1C2BBAC027ECC1A400CEED59 /* GameScene.sks */,
@@ -153,16 +146,6 @@
 				761ED14927E9ED660015AB54 /* GameController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		7654A33527EDFCBE00BF3F86 /* Atlas */ = {
-			isa = PBXGroup;
-			children = (
-				1C2BBAC827ECD7B800CEED59 /* Bord1Images.atlas */,
-				1C2BBAC427ECCA9C00CEED59 /* BordImages.atlas */,
-				1C27A71127EA2B9400447540 /* BackImages.atlas */,
-			);
-			path = Atlas;
 			sourceTree = "<group>";
 		};
 		7654A33627EDFCCF00BF3F86 /* Sounds */ = {
@@ -192,7 +175,7 @@
 			);
 			name = SpaceShooter;
 			productName = SpaceShooter;
-			productReference = 761ED12C27E9E85C0015AB54 /* SpaceShooter.app */;
+			productReference = 761ED12C27E9E85C0015AB54 /* Space Arena.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -234,7 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D6C74027EE173D00C2DC02 /* backgroundSound.mp3 in Resources */,
-				1C2BBAC527ECCA9C00CEED59 /* BordImages.atlas in Resources */,
 				76D6C74327EE177D00C2DC02 /* playerShot.wav in Resources */,
 				761ED13B27E9E85C0015AB54 /* Main.storyboard in Resources */,
 				76D6C73E27EE136A00C2DC02 /* Enemy_Explosion.sks in Resources */,
@@ -242,12 +224,10 @@
 				1C8EC0FD27EB739500BB67EF /* fire.sks in Resources */,
 				1C2BBABE27ECBFD700CEED59 /* Actions.sks in Resources */,
 				761ED13D27E9E85D0015AB54 /* Assets.xcassets in Resources */,
-				1C27A71227EA2B9400447540 /* BackImages.atlas in Resources */,
 				76D6C73C27EE0D9E00C2DC02 /* Bullet_Explosion.sks in Resources */,
 				761ED14027E9E85D0015AB54 /* LaunchScreen.storyboard in Resources */,
 				1C2BBAC127ECC1A400CEED59 /* GameScene.sks in Resources */,
 				1C8EC0FC27EB739500BB67EF /* Assets.xcassets in Resources */,
-				1C2BBAC927ECD7B800CEED59 /* Bord1Images.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +411,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lucaspereira.SpaceShooter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Space Arena";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -461,7 +441,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lucaspereira.SpaceShooter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Space Arena";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

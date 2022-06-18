@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var waveGap: Double = 3
     private var lastWaveTime: Double = 0
     private var isPlayerFireEnable = false
+    private var playableRect = UIScreen.main.bounds
     
     let player: PlayerShip = PlayerShip()
     
@@ -33,27 +34,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return analogJoystick
     }()
     
-    var playableRect = UIScreen.main.bounds
-    
-    private var back = SKSpriteNode()
-    private var backWalkingFrames: [SKTexture] = []
-    
-    
-    private var bord = SKSpriteNode()
-    private var bordWalkingFrames: [SKTexture] = []
-    
-    private var bord3 = SKSpriteNode()
-    
-    
-    private var bord1 = SKSpriteNode()
-    private var bord1WalkingFrames: [SKTexture] = []
-    
-    private var bord2 = SKSpriteNode()
-    
-    
-    let BorderCategory : UInt32 = 0x1 << 1
-    
-    
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
@@ -61,179 +41,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupNodes()
         setupJoystick()
         
-        buildBack()
-        animateBack()
-        
-        //        buildBordAnim()
-        //        animateBord()
-        
-        //        buildBord1Anim()
-        //        animateBord1()
-        
         let backgroundSound = SKAudioNode(fileNamed: "backgroundSound.mp3")
         self.addChild(backgroundSound)
-        
-        
-        //Temp code to test enemy DELETE LATER
-        let testEnemy = Enemy(withType: .normal)
-        testEnemy.position = CGPoint(x: frame.maxX - 50, y: frame.maxY - 50)
-        addChild(testEnemy)
-        
-        let testEnemy2 = Enemy(withType: .normal)
-        testEnemy2.position = CGPoint(x: frame.minX + 50, y: frame.minY + 50)
-        addChild(testEnemy2)
     }
     
-    
-    
-    func buildBack() {
-        let backAnimatedAtlas = SKTextureAtlas(named: "BackImages")
-        let f1 = backAnimatedAtlas.textureNamed("back1.png")
-        f1.filteringMode = .nearest
-        let f2 = backAnimatedAtlas.textureNamed("back2.png")
-        f2.filteringMode = .nearest
-        let f3 = backAnimatedAtlas.textureNamed("back3.png")
-        f3.filteringMode = .nearest
-        let f4 = backAnimatedAtlas.textureNamed("back4.png")
-        f4.filteringMode = .nearest
-        var walkFrames: [SKTexture] = [f1, f2, f3, f4]
-        
-        let numImages = backAnimatedAtlas.textureNames.count
-        
-        for i in 1...numImages {
-            
-            let backTextureName = "back\(i).png"
-            walkFrames.append(backAnimatedAtlas.textureNamed(backTextureName))
-            
-        }
-        
-        backWalkingFrames = walkFrames
-        
-        let firstFrameTexture = backWalkingFrames[0]
-        
-        back = SKSpriteNode(texture: firstFrameTexture)
-        back.zPosition = -1
-        back.size = CGSize(width: self.size.width, height: self.size.height)
-        back.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(back)
-    }
-    
-    
-    func buildBordAnim() {
-        let bordAnimatedAtlas = SKTextureAtlas(named: "BordImages")
-        let b1 = bordAnimatedAtlas.textureNamed("bord1.png")
-        let b2 = bordAnimatedAtlas.textureNamed("bord2.png")
-        let b3 = bordAnimatedAtlas.textureNamed("bord3.png")
-        let b4 = bordAnimatedAtlas.textureNamed("bord4.png")
-        var walkieFrames: [SKTexture] = [b1, b2, b3, b4]
-        
-        let numImages = bordAnimatedAtlas.textureNames.count
-        
-        for i in 1...numImages {
-            
-            let bordTextureName = "bord\(i).png"
-            walkieFrames.append(bordAnimatedAtlas.textureNamed(bordTextureName))
-            
-        }
-        
-        bordWalkingFrames = walkieFrames
-        
-        let firstieFrameTexture = bordWalkingFrames[0]
-        
-        bord = SKSpriteNode(texture: firstieFrameTexture)
-        bord.zPosition = 1
-        bord.size = CGSize(width: 400, height: 10)
-        bord.position = CGPoint(x: frame.midX, y: frame.midY - 100)
-        addChild(bord)
-        
-        bord3 = SKSpriteNode(texture: firstieFrameTexture)
-        bord3.zPosition = 1
-        bord3.size = CGSize(width: 400, height: 10)
-        bord3.yScale = -1.0
-        bord3.position = CGPoint(x: frame.midX, y: frame.midY + 100)
-        addChild(bord3)
-    }
-    
-    func buildBord1Anim() {
-        let bord1AnimatedAtlas = SKTextureAtlas(named: "Bord1Images")
-        let a1 = bord1AnimatedAtlas.textureNamed("bord1.png")
-        let a2 = bord1AnimatedAtlas.textureNamed("bord2.png")
-        let a3 = bord1AnimatedAtlas.textureNamed("bord3.png")
-        let a4 = bord1AnimatedAtlas.textureNamed("bord4.png")
-        var walkie1Frames: [SKTexture] = [a1, a2, a3, a4]
-        
-        let numImages1 = bord1AnimatedAtlas.textureNames.count
-        
-        for i in 1...numImages1 {
-            
-            let bord1TextureName = "bord\(i).png"
-            walkie1Frames.append(bord1AnimatedAtlas.textureNamed(bord1TextureName))
-            
-        }
-        
-        bord1WalkingFrames = walkie1Frames
-        
-        let firstie1FrameTexture = bord1WalkingFrames[0]
-        
-        bord1 = SKSpriteNode(texture: firstie1FrameTexture)
-        bord1.zPosition = 1
-        bord1.size = CGSize(width: 20, height: 400)
-        bord1.position = CGPoint(x: frame.midX - frame.height, y: frame.midY)
-        addChild(bord1)
-        
-        bord2 = SKSpriteNode(texture: firstie1FrameTexture)
-        bord2.zPosition = 1
-        bord2.size = CGSize(width: 20, height: 400)
-        bord2.position = CGPoint(x: frame.midX + frame.height, y: frame.midY)
-        bord2.xScale = -1.0
-        addChild(bord2)
-    }
-    
-    func animateBord1() {
-        bord1.run(SKAction.repeatForever(
-            SKAction.animate(with: bord1WalkingFrames,
-                             timePerFrame: 0.4,
-                             resize: false,
-                             restore: true)),
-                  withKey:"walkingInPlaceBord")
-        
-        bord2.run(SKAction.repeatForever(
-            SKAction.animate(with: bord1WalkingFrames,
-                             timePerFrame: 0.4,
-                             resize: false,
-                             restore: true)),
-                  withKey:"walkingInPlaceBord")
-        
-    }
-    
-    func animateBord() {
-        bord.run(SKAction.repeatForever(
-            SKAction.animate(with: bordWalkingFrames,
-                             timePerFrame: 0.4,
-                             resize: false,
-                             restore: true)),
-                 withKey:"walkingInPlaceBord")
-        
-        bord3.run(SKAction.repeatForever(
-            SKAction.animate(with: bordWalkingFrames,
-                             timePerFrame: 0.4,
-                             resize: false,
-                             restore: true)),
-                  withKey:"walkingInPlaceBord")
-    }
-    
-    
-    func animateBack() {
-        back.run(SKAction.repeatForever(
-            SKAction.animate(with: backWalkingFrames,
-                             timePerFrame: 0.4,
-                             resize: false,
-                             restore: true)),
-                 withKey:"walkingInPlaceBack")
-    }
-    
-    
-    //MARK: Initial Setups
+    //MARK: Initial Setup
     func setupNodes() {
         backgroundColor = UIColor.black
         
@@ -309,6 +121,56 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        if (lastWaveTime + 5) < currentTime {
+            spawnWave()
+            lastWaveTime = currentTime
+        }
+        
+        for node in children {
+            
+            if let enemy = node as? Enemy {
+                updateEnemy(enemy, withTime: currentTime)
+            }
+            
+            if let bullet = node as? Bullet {
+                updateBullet(bullet)
+            }
+        }
+        
+        updatePlayerWithTime(currentTime)
+    }
+}
+
+extension GameScene {
+    func updatePlayerWithTime(_ currentTime: TimeInterval) {
+        if (isPlayerFireEnable) && (player.lastFireTime + 0.3 < currentTime) {
+            player.lastFireTime = currentTime
+            player.fire()
+        }
+    }
+    
+    func updateBullet(_ bullet: Bullet) {
+        if !frame.intersects(bullet.frame) {
+            bullet.removeFromParent()
+        }
+    }
+    
+    func updateEnemy(_ enemy: Enemy, withTime currentTime: TimeInterval) {
+        enemy.moveTo(player.position)
+        
+        if enemy.lastFireTime + 3 < currentTime {
+            enemy.lastFireTime = currentTime
+            
+            if !enemy.shouldFire {
+                enemy.shouldFire = true
+                
+            } else {
+                enemy.fire()
+            }
+        }
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else {return}
         guard let nodeB = contact.bodyB.node else {return}
@@ -354,42 +216,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        if (lastWaveTime + 5) < currentTime {
-            spawnWave()
-            lastWaveTime = currentTime
-        }
-        
-        for node in children {
-            
-            if let enemy = node as? Enemy {
-                enemy.moveTo(player.position)
-                
-                if enemy.lastFireTime + 3 < currentTime {
-                    enemy.lastFireTime = currentTime
-                    
-                    if !enemy.shouldFire {
-                        enemy.shouldFire = true
-                        
-                    } else {
-                        enemy.fire()
-                    }
-                }
-            }
-            
-            if let bullet = node as? Bullet {
-                if !frame.intersects(bullet.frame) {
-                    bullet.removeFromParent()
-                }
-            }
-        }
-        
-        if (isPlayerFireEnable) && (player.lastFireTime + 0.3 < currentTime) {
-            player.lastFireTime = currentTime
-            player.fire()
-        }
-    }
-    
     func spawnWave(){
         let courner1 = CGPoint(x: frame.minX, y: frame.minY)
         let courner2 = CGPoint(x: frame.minX, y: frame.maxY)
@@ -404,7 +230,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(enemy)
         }
         
-        print("WAVE!!")
+        print("NEW WAVE!!")
         
         waveCount += 1
     }
