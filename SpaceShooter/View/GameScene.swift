@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let player: PlayerShip = PlayerShip()
     
-    lazy var joystick: AnalogJoystick = {
+    lazy var movJoystick: AnalogJoystick = {
         let analogJoystick = AnalogJoystick(
             withBase: TLAnalogJoystickComponent(diameter: JOYSTICK_BASE_SIZE, color: .clear, image: UIImage(named: "jSubstrate"))
             ,
@@ -34,12 +34,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return analogJoystick
     }()
     
+    lazy var shootJoystick: AnalogJoystick = {
+        let analogJoystick = AnalogJoystick(
+            withBase: TLAnalogJoystickComponent(diameter: JOYSTICK_BASE_SIZE, color: .clear, image: UIImage(named: "jSubstrate"))
+            ,
+            handle: TLAnalogJoystickComponent(diameter: JOYSTICK_HANDLE_SIZE, color: .clear, image: UIImage(named: "jStick"))
+        )
+        
+        analogJoystick.zPosition = NodeZPosition.hud.rawValue
+        analogJoystick.position = CGPoint(
+            x: frame.maxX - JOYSTICK_BASE_SIZE,
+            y: frame.minY + SCREEN_INSET + JOYSTICK_BASE_SIZE
+        )
+        
+        return analogJoystick
+    }()
+    
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
         
         setupNodes()
-        setupJoystick()
         
         let backgroundSound = SKAudioNode(fileNamed: "backgroundSound.mp3")
         self.addChild(backgroundSound)
@@ -63,15 +78,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let xConstraint = SKConstraint.positionX(xRange)
         self.player.constraints = [xConstraint, yConstraint]
         
+        setupMovJoystick()
+        setupShootJoystick()
     }
     
-    func setupJoystick() {
-        joystick.zPosition = NodeZPosition.hud.rawValue
-        addChild(joystick)
+    func setupMovJoystick() {
+        movJoystick.zPosition = NodeZPosition.hud.rawValue
+        addChild(movJoystick)
         
-        joystick.on(.move) { [unowned self] jsInput in
-            isPlayerShootingEnable = true
-            
+        movJoystick.on(.move) { [unowned self] jsInput in
             // Control player movement
             player.position = CGPoint(
                 x: player.position.x + (jsInput.velocity.x * player.velocity),
@@ -88,9 +103,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.fireEmitter.emissionAngle = jsInput.angular + DEGREES_90
         }
         
-        joystick.on(.end) { [unowned self] _ in
-            isPlayerShootingEnable = false
+        movJoystick.on(.end) { [unowned self] _ in
             player.fireEmitter.particleBirthRate = 0
+        }
+    }
+    
+    func setupShootJoystick() {
+        shootJoystick.zPosition = NodeZPosition.hud.rawValue
+        addChild(shootJoystick)
+        
+        shootJoystick.on(.move) { [unowned self] jsInput in
+            if !isPlayerShootingEnable {
+                isPlayerShootingEnable = true
+            }
+            
+            player.shootAngle = jsInput.angular
+        }
+        
+        movJoystick.on(.end) { [unowned self] _ in
+            isPlayerShootingEnable = false
         }
     }
     

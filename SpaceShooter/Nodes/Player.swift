@@ -14,6 +14,7 @@ class PlayerShip: SKSpriteNode {
     
     var isFireEmitterAdded: Bool = false
     var lastFireTime: Double = 0
+    var shootAngle: CGFloat = 0
     
     init() {
         fireEmitter = SKEmitterNode(fileNamed: "fire.sks")!
@@ -54,12 +55,12 @@ class PlayerShip: SKSpriteNode {
         if let world = self.scene {
             let bullet = Bullet(withType: BulletType.player)
             bullet.position = position
-            bullet.zRotation = zRotation
+            bullet.zRotation = shootAngle
             
             world.addChild(bullet)
             
-            let dx = bullet.velocity * cos(zRotation + DEGREES_90)
-            let dy = bullet.velocity * sin(zRotation + DEGREES_90)
+            let dx = bullet.velocity * cos(shootAngle + DEGREES_90)
+            let dy = bullet.velocity * sin(shootAngle + DEGREES_90)
             bullet.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
         }
     }
