@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "jStick.png",
+      "filename" : "joystick_stick.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "joystick_stick@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "joystick_stick@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

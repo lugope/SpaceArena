@@ -176,7 +176,6 @@ open class TLAnalogJoystickComponent: SKSpriteNode {
     private func redrawTexture() {
         if let img = image {
             let newTexture = SKTexture(image: img)
-            newTexture.filteringMode = .nearest
             texture = newTexture
         }
     }

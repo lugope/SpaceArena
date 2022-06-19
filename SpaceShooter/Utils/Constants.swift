@@ -8,8 +8,8 @@
 import Foundation
 import SpriteKit
 
-let JOYSTICK_BASE_SIZE: CGFloat = 50
-let JOYSTICK_HANDLE_SIZE: CGFloat = 32
+let JOYSTICK_BASE_SIZE: CGFloat = 100
+let JOYSTICK_HANDLE_SIZE: CGFloat = 50
 
 let SCREEN_INSET: CGFloat = 20
 let DEGREES_180: CGFloat = CGFloat(Float.pi)
@@ -51,7 +51,6 @@ enum BulletType {
         }
         
         let texture = SKTexture(imageNamed: textureName)
-        texture.filteringMode = .nearest
         return texture
     }
     
@@ -117,7 +116,6 @@ enum EnemyType {
         }
         
         let texture = SKTexture(imageNamed: textureName)
-        texture.filteringMode = .nearest
         
         return texture
     }

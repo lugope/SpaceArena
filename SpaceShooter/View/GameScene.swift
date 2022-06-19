@@ -13,7 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var waveCount: Int = 2
     private var waveGap: Double = 3
     private var lastWaveTime: Double = 0
-    private var isPlayerFireEnable = false
+    private var isPlayerShootingEnable = false
     private var playableRect = UIScreen.main.bounds
     
     let player: PlayerShip = PlayerShip()
@@ -27,8 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         analogJoystick.zPosition = NodeZPosition.hud.rawValue
         analogJoystick.position = CGPoint(
-            x: frame.minX + SCREEN_INSET + JOYSTICK_BASE_SIZE/2,
-            y: frame.minY + SCREEN_INSET + JOYSTICK_BASE_SIZE/2
+            x: frame.minX + JOYSTICK_BASE_SIZE,
+            y: frame.minY + SCREEN_INSET + JOYSTICK_BASE_SIZE
         )
         
         return analogJoystick
@@ -47,7 +47,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: Initial Setup
     func setupNodes() {
-        backgroundColor = UIColor.black
+        let background = SKSpriteNode(imageNamed: "background")
+        background.zPosition = NodeZPosition.background.rawValue
+        addChild(background)
         
         player.position = CGPoint(
             x: frame.midX,
@@ -68,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(joystick)
         
         joystick.on(.move) { [unowned self] jsInput in
-            isPlayerFireEnable = true
+            isPlayerShootingEnable = true
             
             // Control player movement
             player.position = CGPoint(
@@ -87,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         joystick.on(.end) { [unowned self] _ in
-            isPlayerFireEnable = false
+            isPlayerShootingEnable = false
             player.fireEmitter.particleBirthRate = 0
         }
     }
@@ -144,7 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 extension GameScene {
     func updatePlayerWithTime(_ currentTime: TimeInterval) {
-        if (isPlayerFireEnable) && (player.lastFireTime + 0.3 < currentTime) {
+        if (isPlayerShootingEnable) && (player.lastFireTime + 0.3 < currentTime) {
             player.lastFireTime = currentTime
             player.fire()
         }

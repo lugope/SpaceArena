@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "enemyBullet.png",
+      "filename" : "bullet_enemy.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "bullet_enemy@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "bullet_enemy@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

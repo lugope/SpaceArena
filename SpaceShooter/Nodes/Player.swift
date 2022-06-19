@@ -16,13 +16,10 @@ class PlayerShip: SKSpriteNode {
     var lastFireTime: Double = 0
     
     init() {
-        let texture = SKTexture(imageNamed: "player")
-        texture.filteringMode = .nearest
-        
         fireEmitter = SKEmitterNode(fileNamed: "fire.sks")!
         
         super.init(
-            texture: texture,
+            texture: SKTexture(imageNamed: "player"),
             color: UIColor.clear,
             size: CGSize(width: 32, height: 32)
         )

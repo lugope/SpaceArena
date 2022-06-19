@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "jSubstrate.png",
+      "filename" : "joystick_substrate.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "joystick_substrate@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "joystick_substrate@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
