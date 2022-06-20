@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "761ED12B27E9E85C0015AB54"
-               BuildableName = "SpaceShooter.app"
+               BuildableName = "Space Arena.app"
                BlueprintName = "SpaceShooter"
                ReferencedContainer = "container:SpaceShooter.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "761ED12B27E9E85C0015AB54"
-            BuildableName = "SpaceShooter.app"
+            BuildableName = "Space Arena.app"
             BlueprintName = "SpaceShooter"
             ReferencedContainer = "container:SpaceShooter.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "761ED12B27E9E85C0015AB54"
-            BuildableName = "SpaceShooter.app"
+            BuildableName = "Space Arena.app"
             BlueprintName = "SpaceShooter"
             ReferencedContainer = "container:SpaceShooter.xcodeproj">
          </BuildableReference>
