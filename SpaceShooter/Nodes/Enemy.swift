@@ -65,11 +65,11 @@ class Enemy: SKSpriteNode {
             
             world.addChild(bullet)
             
-            self.run(SKAction.sequence([
-                SKAction.run {
-                    self.shootingSound.run(SKAction.play())
-                }
-            ]))
+//            self.run(SKAction.sequence([
+//                SKAction.run {
+//                    self.shootingSound.run(SKAction.play())
+//                }
+//            ]))
             
             let dx = bullet.velocity * cos(zRotation + DEGREES_90)
             let dy = bullet.velocity * sin(zRotation + DEGREES_90)

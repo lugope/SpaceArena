@@ -6,9 +6,11 @@
 //
 
 import SpriteKit
-import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    let player: PlayerShip = PlayerShip()
+    let timerNode: SKLabelNode = SKLabelNode(fontNamed: "Arial-BoldMT")
     
     private var waveCount: Int = 2
     private var waveGap: Double = 3
@@ -16,7 +18,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var isPlayerShootingEnable = false
     private var playableRect = UIScreen.main.bounds
     
-    let player: PlayerShip = PlayerShip()
+    private var initialTime: Double = 0
+    private var time: Double = 0 {
+        didSet {
+            let timef: Int = Int(time * 100)
+            
+            let min = timef / (60 * 100)
+            let sec = timef % 6000 / 100
+            let msec = timef % 100
+            
+            timerNode.text = String(format: "%02d:%02d.%02d", min, sec, msec)
+        }
+    }
     
     lazy var movJoystick: AnalogJoystick = {
         let analogJoystick = AnalogJoystick(
@@ -66,20 +79,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.zPosition = NodeZPosition.background.rawValue
         addChild(background)
         
+        setupPlayer()
+        
+        setUpTimer()
+        setupMovJoystick()
+        setupShootJoystick()
+    }
+    
+    func setUpTimer() {
+        timerNode.zPosition = NodeZPosition.hud.rawValue
+        timerNode.text = "00:00.00"
+        timerNode.position = CGPoint(
+            x: frame.midX,
+            y: frame.maxY - timerNode.frame.height*2 - SCREEN_INSET
+        )
+        addChild(timerNode)
+    }
+    
+    func setupPlayer() {
         player.position = CGPoint(
             x: frame.midX,
             y: frame.midY
         )
-        addChild(player)
         
-        let xRange = SKRange(lowerLimit: frame.midX - frame.height, upperLimit: frame.midX + frame.height)
-        let yRange = SKRange(lowerLimit: frame.midY - 100, upperLimit: frame.midY + 100)
+        let xRange = SKRange(lowerLimit: frame.minX, upperLimit: frame.maxX)
+        let yRange = SKRange(lowerLimit: frame.minY, upperLimit: frame.maxY)
         let yConstraint = SKConstraint.positionY(yRange)
         let xConstraint = SKConstraint.positionX(xRange)
         self.player.constraints = [xConstraint, yConstraint]
         
-        setupMovJoystick()
-        setupShootJoystick()
+        addChild(player)
     }
     
     func setupMovJoystick() {
@@ -155,13 +184,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if (lastWaveTime + 5) < currentTime {
-            spawnWave()
-            lastWaveTime = currentTime
-        }
-        
         for node in children {
-            
             if let enemy = node as? Enemy {
                 updateEnemy(enemy, withTime: currentTime)
             }
@@ -172,10 +195,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         updatePlayerWithTime(currentTime)
+        updateTimer(currentTime)
+        updateWaves(currentTime)
     }
 }
 
 extension GameScene {
+    func updateTimer(_ currentTime: TimeInterval) {
+        if initialTime == 0 {
+            initialTime = currentTime
+        }
+        
+        time = currentTime - initialTime
+    }
+    
     func updatePlayerWithTime(_ currentTime: TimeInterval) {
         if (isPlayerShootingEnable) && (player.lastFireTime + 0.3 < currentTime) {
             player.lastFireTime = currentTime
@@ -202,6 +235,32 @@ extension GameScene {
                 enemy.fire()
             }
         }
+    }
+    
+    func updateWaves(_ currentTime: TimeInterval) {
+        if (lastWaveTime + 5) < currentTime {
+            spawnWave()
+            lastWaveTime = currentTime
+        }
+    }
+    
+    func spawnWave() {
+        let courner1 = CGPoint(x: frame.minX, y: frame.minY)
+        let courner2 = CGPoint(x: frame.minX, y: frame.maxY)
+        let courner3 = CGPoint(x: frame.maxX, y: frame.minY)
+        let courner4 = CGPoint(x: frame.maxX, y: frame.maxY)
+        
+        let courners = [courner1, courner2, courner3, courner4]
+        
+        for i in 1...waveCount {
+            let enemy = Enemy(withType: EnemyType.normal)
+            enemy.position = courners[i%4]
+            addChild(enemy)
+        }
+        
+//        print("NEW WAVE!!")
+        
+        waveCount += 1
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -247,25 +306,6 @@ extension GameScene {
             secoundNode.removeFromParent()
             firstNode.removeFromParent()
         }
-    }
-    
-    func spawnWave(){
-        let courner1 = CGPoint(x: frame.minX, y: frame.minY)
-        let courner2 = CGPoint(x: frame.minX, y: frame.maxY)
-        let courner3 = CGPoint(x: frame.maxX, y: frame.minY)
-        let courner4 = CGPoint(x: frame.maxX, y: frame.maxY)
-        
-        let courners = [courner1, courner2, courner3, courner4]
-        
-        for i in 1...waveCount {
-            let enemy = Enemy(withType: EnemyType.normal)
-            enemy.position = courners[i%4]
-            addChild(enemy)
-        }
-        
-        print("NEW WAVE!!")
-        
-        waveCount += 1
     }
 }
 
