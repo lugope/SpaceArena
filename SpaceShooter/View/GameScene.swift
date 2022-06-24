@@ -76,6 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //MARK: Initial Setup
     func setupNodes() {
         let background = SKSpriteNode(imageNamed: "background")
+        background.size = frame.size
         background.zPosition = NodeZPosition.background.rawValue
         addChild(background)
         
@@ -305,6 +306,9 @@ extension GameScene {
             }
             secoundNode.removeFromParent()
             firstNode.removeFromParent()
+            
+            let initialScene = InitialScene(fileNamed: "InitialScene")!
+            self.scene?.view?.presentScene(initialScene, transition: SKTransition.fade(withDuration: 1.0))
         }
     }
 }
